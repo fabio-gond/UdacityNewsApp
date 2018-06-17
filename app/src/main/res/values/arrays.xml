@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sectionEntries">
+        <item>Sport</item>
+        <item>Politics</item>
+        <item>Society</item>
+        <item>Technology</item>
+    </string-array>
+    <string-array name="sectionValues">
+        <item>sport</item>
+        <item>politics</item>
+        <item>society</item>
+        <item>technology</item>
+    </string-array>
+</resources>
