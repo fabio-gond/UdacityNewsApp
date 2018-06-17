@@ -6,6 +6,10 @@ import java.io.InputStream;
 import java.net.URL;
 
 public class Api {
+
+    /**
+     * Create a drawable from the url of the image
+     */
     public static Drawable LoadImageFromWebOperations(String url) {
         try {
             InputStream is = (InputStream) new URL(url).getContent();

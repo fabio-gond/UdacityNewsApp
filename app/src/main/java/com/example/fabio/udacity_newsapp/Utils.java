@@ -57,8 +57,7 @@ public class Utils {
                 String imgUrl = currentArticle.getJSONObject("fields").getString("thumbnail");
                 String section = currentArticle.getString("sectionName");
 
-                // Create a new {@link Article} object with the magnitude, location, time,
-                // and url from the JSON response.
+                // Create a new {@link Article} object from the JSON response.
                 Article article = new Article(title , date , url , imgUrl, section);
 
                 // Add the new {@link Article} to the list of articles.

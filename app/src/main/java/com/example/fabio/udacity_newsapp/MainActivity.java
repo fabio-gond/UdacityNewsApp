@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     public static final String LOG_TAG = MainActivity.class.getName();
     private static final String USGS_REQUEST_URL =
-            "http://content.guardianapis.com/search?api-key=test&show-fields=thumbnail&section=football";
+            "http://content.guardianapis.com/search?api-key=test&show-fields=thumbnail&section=sport|football";
     private static final int ARTICLE_LOADER_ID = 1;
 
     private TextView mEmptyStateTextView;
@@ -36,9 +36,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView articleListView = (ListView) findViewById(R.id.list);
+        ListView articleListView = findViewById(R.id.list);
 
-        mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
+        mEmptyStateTextView = findViewById(R.id.empty_view);
         articleListView.setEmptyView(mEmptyStateTextView);
 
         // Create a new adapter that takes an empty list of articles as input
@@ -94,7 +94,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             mEmptyStateTextView.setText(R.string.no_internet_connection);
         }
     }
-
 
 
     @Override
