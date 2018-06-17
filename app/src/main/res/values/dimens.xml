@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="all_midPadding">16dp</dimen>
+    <dimen name="article_margin">5dp</dimen>
+    <dimen name="article_height">300dp</dimen>
+    <dimen name="article_titleSize">20sp</dimen>
+</resources>
