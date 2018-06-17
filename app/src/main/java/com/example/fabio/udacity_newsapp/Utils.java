@@ -38,11 +38,11 @@ public class Utils {
         try {
 
             // Create a JSONObject from the JSON response string
-            JSONObject baseJsonResponse = new JSONObject(articleJSON);
+            JSONObject baseJsonResponse = new JSONObject(articleJSON).getJSONObject("response");
 
             // Extract the JSONArray associated with the key called "features",
             // which represents a list of features (or articles).
-            JSONArray articleArray = baseJsonResponse.getJSONArray("features");
+            JSONArray articleArray = baseJsonResponse.getJSONArray("results");
 
             // For each article in the articleArray, create an {@link Article} object
             for (int i = 0; i < articleArray.length(); i++) {
@@ -50,26 +50,14 @@ public class Utils {
                 // Get a single article at position i within the list of articles
                 JSONObject currentArticle = articleArray.getJSONObject(i);
 
-                // For a given article, extract the JSONObject associated with the
-                // key called "properties", which represents a list of all properties
-                // for that article.
-                JSONObject properties = currentArticle.getJSONObject("properties");
-
-                // Extract the value for the key called "mag"
-                double magnitude = properties.getDouble("mag");
-
-                // Extract the value for the key called "place"
-                String location = properties.getString("place");
-
-                // Extract the value for the key called "time"
-                long time = properties.getLong("time");
-
-                // Extract the value for the key called "url"
-                String url = properties.getString("url");
+                String title = currentArticle.getString("webTitle");
+                String date = currentArticle.getString("webPublicationDate");
+                String url = currentArticle.getString("webUrl");
+                String imgUrl = currentArticle.getJSONObject("fields").getString("thumbnail");
 
                 // Create a new {@link Article} object with the magnitude, location, time,
                 // and url from the JSON response.
-                Article article = new Article(magnitude, location, time, url);
+                Article article = new Article(title , date , url , imgUrl);
 
                 // Add the new {@link Article} to the list of articles.
                 articles.add(article);

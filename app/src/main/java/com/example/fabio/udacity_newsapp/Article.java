@@ -2,24 +2,31 @@ package com.example.fabio.udacity_newsapp;
 
 public class Article {
     private String title;
-    private String description;
-    private int time;
+    private String date;
+    private String url;
+    private String imgUrl;
 
-    public Article(String title, String description, int time) {
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public Article(String title, String date, String url, String imgUrl) {
+
         this.title = title;
-        this.description = description;
-        this.time = time;
+        this.date = date;
+        this.url = url;
+        this.imgUrl = imgUrl;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDate() {
+        return date;
     }
 
-    public int getTime() {
-        return time;
+    public String getUrl() {
+        return url;
     }
 }
