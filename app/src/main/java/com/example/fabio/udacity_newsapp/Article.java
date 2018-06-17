@@ -5,17 +5,20 @@ public class Article {
     private String date;
     private String url;
     private String imgUrl;
+    private String section;
+
+
 
     public String getImgUrl() {
         return imgUrl;
     }
 
-    public Article(String title, String date, String url, String imgUrl) {
-
+    public Article(String title, String date, String url, String imgUrl, String section) {
         this.title = title;
         this.date = date;
         this.url = url;
         this.imgUrl = imgUrl;
+        this.section = section;
     }
 
     public String getTitle() {
@@ -28,5 +31,9 @@ public class Article {
 
     public String getUrl() {
         return url;
+    }
+
+    public String getSection() {
+        return section;
     }
 }

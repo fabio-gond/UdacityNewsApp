@@ -1,5 +1,6 @@
 package com.example.fabio.udacity_newsapp;
 
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -54,10 +55,11 @@ public class Utils {
                 String date = currentArticle.getString("webPublicationDate");
                 String url = currentArticle.getString("webUrl");
                 String imgUrl = currentArticle.getJSONObject("fields").getString("thumbnail");
+                String section = currentArticle.getString("sectionName");
 
                 // Create a new {@link Article} object with the magnitude, location, time,
                 // and url from the JSON response.
-                Article article = new Article(title , date , url , imgUrl);
+                Article article = new Article(title , date , url , imgUrl, section);
 
                 // Add the new {@link Article} to the list of articles.
                 articles.add(article);
@@ -170,4 +172,5 @@ public class Utils {
         // Return the list of {@link Article}s
         return articles;
     }
+
 }

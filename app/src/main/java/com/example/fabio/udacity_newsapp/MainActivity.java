@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     public static final String LOG_TAG = MainActivity.class.getName();
     private static final String USGS_REQUEST_URL =
-            "http://content.guardianapis.com/search?api-key=test&show-fields=thumbnail";
+            "http://content.guardianapis.com/search?api-key=test&show-fields=thumbnail&section=football";
     private static final int ARTICLE_LOADER_ID = 1;
 
     private TextView mEmptyStateTextView;

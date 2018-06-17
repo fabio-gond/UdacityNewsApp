@@ -1,10 +1,14 @@
 package com.example.fabio.udacity_newsapp;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -37,7 +41,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         }
 
         // Find the article at the given position in the list of articles
-        Article currentArticle = getItem(position);
+        final Article currentArticle = getItem(position);
 
 
         // Find the TextView with view ID location
@@ -51,6 +55,21 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         String formattedDate = formatDate(currentArticle.getDate());
         // Display the date of the current article in that TextView
         dateView.setText(formattedDate);
+
+        TextView sectionView = listItemView.findViewById(R.id.item_section);
+        sectionView.setText(currentArticle.getSection());
+
+        ImageView imageView = listItemView.findViewById(R.id.item_image);
+        RetrieveImageTask task = new RetrieveImageTask();
+        task.execute(new MyTaskParams(currentArticle.getImgUrl() , imageView));
+
+        listItemView.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(currentArticle.getUrl()));
+                getContext().startActivity(i);
+            }
+        });
 
         // Return the list item view that is now showing the appropriate data
         return listItemView;
@@ -70,4 +89,36 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
         return timeFormat.format(dateObject);
     }
+
+    private static class MyTaskParams {
+        String imgUrl;
+        ImageView imageView;
+
+        public MyTaskParams(String imgUrl, ImageView imageView) {
+            this.imgUrl = imgUrl;
+            this.imageView = imageView;
+        }
+    }
+
+    private class RetrieveImageTask extends AsyncTask<MyTaskParams, Void, Boolean> {
+
+        private Exception exception;
+
+        protected Boolean doInBackground(MyTaskParams... params) {
+            try {
+                ImageView imageView = params[0].imageView;
+                imageView.setImageDrawable(Api.LoadImageFromWebOperations(params[0].imgUrl));
+                return true;
+            } catch (Exception e) {
+                this.exception = e;
+                return false;
+            }
+        }
+
+        protected void onPostExecute() {
+            // TODO: check this.exception
+            // TODO: do something with the feed
+        }
+    }
+
 }
