@@ -1,6 +1,7 @@
 package com.example.fabio.udacity_newsapp;
 
 import android.content.SharedPreferences;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
@@ -23,7 +24,25 @@ public class SettingsActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
 
-            Preference section = findPreference(getString(R.string.settings_section_key));
+            ListPreference section = (ListPreference) findPreference(getString(R.string.settings_section_key));
+
+            SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
+            // getString retrieves a String value from the preferences. The second parameter is the default value for this preference.
+            String sectionPref = sharedPrefs.getString(
+                    getString(R.string.settings_section_key),
+                    getString(R.string.settings_section_default));
+
+            String[] values = getResources().getStringArray(R.array.sectionValues);
+            String[] entries = getResources().getStringArray(R.array.sectionEntries);
+
+            for (int i = 0; i < values.length; i++) {
+                if ( sectionPref.equals(values[i])){
+                    section.setValueIndex(i);
+                }
+            }
+
+            
             bindPreferenceSummaryToValue(section);
         }
 

@@ -6,9 +6,9 @@
     <ListPreference
         android:key="@string/settings_section_key"
         android:title="@string/settings_section_label"
-        android:summary="@string/settings_section_default"
+        android:defaultValue="@string/settings_section_default"
         android:entries="@array/sectionEntries"
-        android:entryValues="@array/sectionValues" />
+        android:entryValues="@array/sectionValues"/>
 
 
 </PreferenceScreen>
