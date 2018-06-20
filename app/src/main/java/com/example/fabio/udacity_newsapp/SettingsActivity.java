@@ -34,7 +34,6 @@ public class SettingsActivity extends AppCompatActivity {
                     getString(R.string.settings_section_default));
 
             String[] values = getResources().getStringArray(R.array.sectionValues);
-            String[] entries = getResources().getStringArray(R.array.sectionEntries);
 
             for (int i = 0; i < values.length; i++) {
                 if ( sectionPref.equals(values[i])){
@@ -42,7 +41,7 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             }
 
-            
+
             bindPreferenceSummaryToValue(section);
         }
 

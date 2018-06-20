@@ -41,12 +41,12 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         TextView itemTitle = listItemView.findViewById(R.id.item_title);
         itemTitle.setText(currentArticle.getTitle());
 
-        TextView dateView = listItemView.findViewById(R.id.item_date);
+        TextView dateTextView = listItemView.findViewById(R.id.item_date);
         String formattedDate = formatDate(currentArticle.getDate());
-        dateView.setText(formattedDate);
+        dateTextView.setText(formattedDate);
 
-        TextView sectionView = listItemView.findViewById(R.id.item_section);
-        sectionView.setText(currentArticle.getSection());
+        TextView sectionView = listItemView.findViewById(R.id.item_sectionAndAuthor);
+        sectionView.setText(currentArticle.getSection() + " - By " + currentArticle.getAuthNames());
 
         ImageView imageView = listItemView.findViewById(R.id.item_image);
         RetrieveImageTask task = new RetrieveImageTask();

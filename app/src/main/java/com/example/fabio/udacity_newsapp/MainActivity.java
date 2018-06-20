@@ -135,7 +135,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         // buildUpon prepares the baseUri that we just parsed so we can add query parameters to it
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
-        uriBuilder.appendQueryParameter("api-key" ,"test");
+        uriBuilder.appendQueryParameter("q","debates");
+        uriBuilder.appendQueryParameter("show-tags","contributor");
+        uriBuilder.appendQueryParameter("api-key" ,"38b99216-a8d6-49c9-9014-ee7be3ac5ce3");
         uriBuilder.appendQueryParameter("show-fields", "thumbnail");
         uriBuilder.appendQueryParameter("section", section);
 

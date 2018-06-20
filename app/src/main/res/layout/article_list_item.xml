@@ -39,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/white"/>
                 <TextView
-                    android:id="@+id/item_section"
+                    android:id="@+id/item_sectionAndAuthor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/white"/>
